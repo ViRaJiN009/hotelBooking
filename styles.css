@@ -121,6 +121,7 @@ nav a:hover {
 }
 .DisplayInfo{
   display: none;
+  height: auto;
 }
 .DisplayInfo h2{
     text-align: center;
