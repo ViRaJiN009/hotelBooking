@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <article class="booking-banner">
+        <header>
+            <nav>
+                <ul>
+                <img src="./logo_transparent.png" alt="Hotel Logo" class="logo">
+                  <li><a href="./Index.html">Home</a></li>
+                  <li><a href="./Branches.html">Hotel Branches</a></li>
+                  <li><a href="./Adventure.html">Adventure</a></li>
+                  <li><a href="./Restaurant.html">Restaurants</a></li>
+                  <li><a href=".//Booking.html">Booking</a></li>
+                </ul>
+              </nav>
+        </header>
+        <article class="grid-container">
+            <section class="booking-form">
+                <form method="get" id="bookingForm">
+                    <h2>Room Booking</h2>
+
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="check-in">Check-in Date:</label>
+                    <input type="date" id="check-in" name="check-in" required>
+          
+                    <label for="check-out">Check-out Date:</label>
+                    <input type="date" id="check-out" name="check-out" required>
+    
+                    <label for="room-type">Room Type:</label>
+                    <select id="room-type" required>
+                      <option value="" disabled selected>Select Room Type</option>
+                      <option value="Single">Single</option>
+                      <option value="Double">Double</option>
+                      <option value="Triple">Triple</option> 
+                      </select>
+                      
+                    <label for="numberOfRooms">Number of Rooms:</label>
+                    <input type="number" id="numberOfRooms" min="1" value="1">
+
+                    <label for="adults">Number of Adults:</label>
+                    <input type="number" id="adults" min="1" value="1">
+
+                    <label for="children">Number of Children:</label>
+                    <input type="number" id="children" min="0" value="0"> 
+
+                   <p>
+                    <label>Extra Requirements:</label>
+                    <input type="checkbox" id="wifi" name="extra" value="wifi"> <label for="wifi">WiFi</label>
+                    <input type="checkbox" id="pool-view" name="extra" value="pool-view"> <label for="pool-view">Pool View</label>
+                    <input type="checkbox" id="garden-view" name="extra" value="garden-view"> <label for="garden-view">Garden View</label>
+                    <input type="checkbox" id="ac" name="extra" value="ac"> <label for="ac">A/C</label>
+                   </p>
+
+                   <label for="extra_beds">Extra Beds:</label>
+                   <input type="number" id="extra_beds" name="extra_beds" min="0" value="0" max="4">
+                    
+                    <input type="text" placeholder="Enter promo code" class="promo-code-field" id="promo">
+                    <button type="submit" id="bookNow">Book Now</button>
+                </form>
+                <form method="get" id = "adventureForm">
+                    <h2>Adventure Booking</h2>
+
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <label for="time">Time:</label>
+                    <input type="time" id="time" min="08:00" value="08:00" max="17:00" required>
+
+                    <label for="hours">Number of hours:</label>
+                    <input type="number" id="hours" min="1" value="1" max="6">
+
+                    <label for="adventureType">Choose Adventure:</label>
+                    <select id="adventureType">
+                    <option value="Diving" selected>Diving</option>
+                    </select>
+
+                    <label for="selectNationality">Select Nationality:</label>
+                    <p>
+                        <input type="radio" id="local" name="nationality" value="local"><label for="local">Local</label>
+                        <input type="radio" id="foreign" name="nationality" value="foreign"><label for="foreign">Foreign</label>
+                    </p>
+
+                    <label for="adults">Number of Adults:</label>
+                    <input type="number" id="adventure-adults" min="1" value="1">
+
+                    <label for="children">Number of Kids:</label>
+                    <input type="number" id="adventure-kids" min="0" value="0">
+
+                    <label for="guide">Need a Guide?</label>
+                    <p>
+                        <input type="checkbox" id="adult_guide" name="guide" value="Adults"><label for="guide">For Adults</label>
+                        <input type="checkbox" id="kid-guide" name="guide" value="Kids"><label for="guide">For Kids</label>
+                    </p>
+
+                    <button type="submit" id="bookAdventure">Book Adventure</button>
+
+                </form>
+            </section>
+            <section class="DisplayInfo">
+                <section class="table-container">
+                    <!-- Display current booking information -->
+                    <h2 id="currentBooking">Current Booking</h2>
+                    <table class="booking-table" id="current-booking">
+                     
+                    </table>
+                </section>
+                <section class="table-container">
+                    <h2 id="overallBooking">Current Adventure Booking</h2>
+                <!-- Display overall booking information -->
+                    <table class="booking-table" id="current-adventure">
+                    
+                    </table>
+                </section>
+                
+            </section>
+        </article>
+    </article>
+    <section class="overallBooking">
+      <h2>Overall Booking</h2>
+      <table id="overallBookingDisplay">
+
+      </table>
+      <button type="submit" id="favourite">Add To Favourite</button>
+      <button type="submit" id="loyalty">Check Loyalty Points</button>
+    </section>
+    <section id="popup" class="popup">
+        <h1>Thank you for Booking with us!</h1>
+        <table id="popupContent" class="popupContent">
+        </table>
+        <button type="button" id="popupOk">OK</button>
+    </section>
+    <footer>
+        <article class="container">
+            <section class="footer-main">
+                <section class="footer-column">
+  
+                    <a href="#" class="footer-link">(+94) 081 2735883</a>
+                    <a href="#" class="footer-link">diversityhotel@info.com</a>
+                    <a href="#" class="footer-link">01, Colombo Street, Kandy, Sri Lanka</a>
+    
+                </section>
+                <section class="footer-column">
+                    <h3 class="fotter-heading">Quick Links</h3>
+                    <a href="./Adventure.html" class="footer-link">Adventure</a>
+                    <a href="./Booking.html" class="footer-link">Booking</a>
+                    <a href="./Restaurant.html" class="footer-link">Restaurant</a>
+    
+                </section>
+                <section class="footer-column">
+                    <h3 class="fotter-heading">Social Media</h3>
+                    <a href="#" class="footer-link">Facebook</a>
+                    <a href="#" class="footer-link">Twitter</a>
+                    <a href="#" class="footer-link">LinkedIn</a>
+    
+                </section>
+    
+            </section>
+            <section class="footer-bottom">
+                
+                <span class="copyright">&copy; 2023 Diversity Hotel & Resort. All Rights Reserved</span>
+            </section>
+            
+        </article>
+    </footer> 
+
+    <script src="./main.js"></script>
+</body>
+</html>
