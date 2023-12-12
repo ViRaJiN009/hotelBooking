@@ -22,7 +22,7 @@ AdventureForm = document.getElementById("adventureForm");
 fullName = document.getElementById("name");
 email = document.getElementById("email");
 checkInDate = document.getElementById("check-in");
-checkOutDate = document.getElementById("check-out");
+numOfNights = document.getElementById("numberOfNights");
 roomType = document.getElementById("room-type");
 numberOfAdults = document.getElementById("adults");
 numberOfChildren = document.getElementById("children");
@@ -76,7 +76,10 @@ popupBtn.addEventListener("click", closePopup);
 
 //Functions
 function init(){
-  localStorage.clear();
+  var today = new Date().toISOString().split('T')[0];
+  document.getElementsByName("check-in")[0].setAttribute('min', today);
+  document.getElementsByName("date")[0].setAttribute('min', today);
+  
     currentBooking.innerHTML = 
     `
       <tr>
@@ -84,7 +87,7 @@ function init(){
         <td style="width:65%"></td>
       </tr>
       <tr>
-        <td>Check-out Date:</td>
+        <td>Number of Nights:</td>
         <td></td>
       </tr>
       <tr>
@@ -165,27 +168,27 @@ function init(){
   `
   <tr>
     <td>Full Name:</td>
-    <td></td>
+    <td>-</td>
   </tr>
   <tr>
     <td>Email:</td>
-    <td></td>
+    <td>-</td>
   </tr>
   <tr>
     <td>Check-in Date:</td>
-    <td style="width:65%"></td>
+    <td style="width:65%">-</td>
   </tr>
   <tr>
-    <td>Check-out Date:</td>
-    <td></td>
+    <td>Number of Nights:</td>
+    <td>-</td>
   </tr>
   <tr>
     <td>Room Type:</td>
-    <td></td>
+    <td>-</td>
   </tr>
   <tr>
     <td>Number of Adults:</td>
-    <td>1</td>
+    <td>0</td>
   </tr>
   <tr>
     <td>Number of Children:</td>
@@ -193,19 +196,19 @@ function init(){
   </tr>
   <tr>
     <td>WiFi:</td>
-    <td>No</td>
+    <td>-</td>
   </tr>
   <tr>
     <td>Pool View:</td>
-    <td>No</td>
+    <td>-</td>
   </tr>
   <tr>
     <td>Garden View:</td>
-    <td>No</td>
+    <td>-</td>
   </tr>
   <tr>
     <td>A/C:</td>
-    <td>No</td>
+    <td>-</td>
   </tr>
   <tr>
     <td>Extra Beds:</td>
@@ -232,7 +235,7 @@ function bookingUpdate(){
   kidsMeal = numberOfChildren.value*5000;
   extraBedCost = extraBeds.value*8000;
   
-  totalCost = roomCost*numOfRooms.value + kidsMeal + extraBedCost;
+  totalCost = (roomCost*numOfRooms.value + kidsMeal + extraBedCost)*numOfNights.value;
 
   if(promoTxt.value === "123"){
     totalCost = totalCost - totalCost*5/100;
@@ -245,8 +248,8 @@ function bookingUpdate(){
       <td>${checkInDate.value}</td>
     </tr>
     <tr>
-      <td>Check-out Date:</td>
-      <td>${checkOutDate.value}</td>
+      <td>Number of Nights:</td>
+      <td>${numOfNights.value}</td>
     </tr>
     <tr>
       <td>Room Type:</td>
@@ -406,7 +409,7 @@ function confirmBooking(evt){
       </tr>
       <tr>
         <td>Check-out Date:</td>
-        <td>${checkOutDate.value}</td>
+        <td>${numOfNights.value}</td>
       </tr>
       <tr>
         <td>Room Type:</td>
@@ -605,7 +608,6 @@ function checkLoyalty(){
     alert("You erned "+showLoyaltyPoints+" loyalty points!");
   }
   else{
-    alert("Make a booking first!")
+    alert("You erned 0 loyalty points!");
   }
-
 }
